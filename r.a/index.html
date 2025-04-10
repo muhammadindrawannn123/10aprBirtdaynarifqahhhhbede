@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Rifqah Amirah 🎉</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe6e6, #ffffcc);
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .typewriter h1 {
+      overflow: hidden;
+      border-right: .15em solid #f472b6;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .05em;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #f472b6; }
+    }
+
+    .fade-in {
+      animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .bounce-in {
+      animation: bounceIn 1s;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .heartbeat {
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .memory-img {
+      transition: all 0.3s ease;
+      filter: grayscale(30%);
+    }
+
+    .memory-img:hover {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .cake {
+      position: relative;
+      margin: 0 auto;
+      width: 120px;
+      height: 120px;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d53f8c;
+    }
+
+    .timeline-item {
+      border-left: 3px solid #f472b6;
+      position: relative;
+      padding-left: 20px;
+      margin-left: 10px;
+      padding-bottom: 20px;
+    }
+
+    .timeline-item:before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background: #f472b6;
+      border-radius: 50%;
+      position: absolute;
+      left: -9px;
+      top: 0px;
+    }
+
+    #music-player {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .wish-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transform: rotate(-2deg);
+      transition: all 0.3s ease;
+    }
+
+    .wish-card:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      animation: balloonFloat 15s ease-in infinite;
+    }
+
+    @keyframes balloonFloat {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+    
+    /* Birthday cake animation */
+    .cake-candle {
+      position: absolute;
+      width: 8px;
+      height: 30px;
+      background: linear-gradient(to bottom, #ffeb3b, #ffc107);
+      border-radius: 4px 4px 0 0;
+      top: -30px;
+    }
+    
+    .cake-candle:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 10px;
+      background: #ff5722;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      top: -10px;
+      left: 0;
+      animation: flicker 1s ease-in-out infinite alternate;
+    }
+    
+    @keyframes flicker {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+  </style>
+</head>
+<body class="text-center p-6 font-sans relative">
+  <!-- Background balloons -->
+  <div id="balloons-container"></div>
+
+  <div class="typewriter mt-10 text-4xl md:text-6xl font-bold text-pink-600">
+    <h1>🎉 Happy Birthday, Rifqah Amirah! 🎂</h1>
+  </div>
+
+  <p class="text-lg md:text-xl text-gray-700 mt-4 fade-in">
+    Semoga harimu penuh tawa, dan kebahagiaan!
+  </p>
+
+  <!-- Birthday Countdown -->
+  <div class="my-8 fade-in" id="birthday-countdown">
+    <h3 class="text-xl font-semibold text-pink-500">Merayakan Ulang Tahunmu</h3>
+    <div class="countdown flex justify-center items-center space-x-2 mt-2">
+      <div class="bg-pink-100 rounded-lg p-3 shadow-md">
+        <span id="days">00</span>
+        <span class="text-sm block">Hari</span>
+      </div>
+      <div class="bg-pink-100 rounded-lg p-3 shadow-md">
+        <span id="hours">00</span>
+        <span class="text-sm block">Jam</span>
+      </div>
+      <div class="bg-pink-100 rounded-lg p-3 shadow-md">
+        <span id="minutes">00</span>
+        <span class="text-sm block">Menit</span>
+      </div>
+      <div class="bg-pink-100 rounded-lg p-3 shadow-md">
+        <span id="seconds">00</span>
+        <span class="text-sm block">Detik</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="my-10 fade-in flex flex-col items-center">
+    <div class="cake mb-4 relative">
+      <img src="/api/placeholder/120/120" alt="Birthday Cake" class="heartbeat"/>
+      <div class="cake-candle" style="left: 40%;"></div>
+      <div class="cake-candle" style="left: 60%;"></div>
+    </div> -->
+    <div class="my-6 fade-in flex justify-center">
+      <button onclick="throwConfetti()" class="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-semibold py-2 px-6 rounded-full shadow-xl transition-transform transform hover:scale-105">
+        🎊 Rayakan!
+      </button>
+      <button onclick="toggleMusic()" class="ml-4 bg-pink-400 hover:bg-pink-500 text-white font-semibold py-2 px-6 rounded-full shadow-xl transition-transform transform hover:scale-105">
+        🎵 Play Musik
+      </button>
+    </div>
+
+  <!-- Music Player - Simplified -->
+  <div id="music-player" class="mb-10 fade-in">
+    <h3 class="text-lg font-semibold text-pink-600 mb-2">🎵 Birthday Music</h3>
+    
+    <!-- Use Tone.js for music generation -->
+    <div class="flex justify-between items-center mt-2">
+      <span id="music-status" class="text-sm text-pink-700">Musik: Tidak dimainkan</span>
+      <div>
+        <button onclick="playMusic()" id="play-btn" class="bg-pink-500 hover:bg-pink-600 text-white rounded-full w-10 h-10 mx-1">▶</button>
+        <button onclick="stopMusic()" id="stop-btn" class="bg-pink-300 hover:bg-pink-400 text-white rounded-full w-10 h-10 mx-1">■</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-12 fade-in">
+    <h2 class="text-2xl font-semibold text-pink-700 mb-6">Fotonya Rifqah si manis bede</h2>
+    <div class="flex justify-center px-4">
+      <img src="3.png" class="rounded-2xl shadow-lg memory-img w-64 md:w-80" alt="Kenangan manis dengan Rifqah"/>
+    </div>
+  </div>
+
+  <!-- Wishes Section -->
+  <div class="my-12">
+    <h2 class="text-2xl font-semibold text-pink-700 mb-6">💌 Ucapan Untuk Rifqah</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+      <div class="wish-card">
+        <p class="text-gray-700">"Selamat ulang tahun, Rifqah! Semoga semua mimpi dan harapanmu terwujud. Tetap bersinar seperti bintang!"</p>
+        <p class="text-right text-sm font-semibold text-pink-500 mt-2">-1</p>
+      </div>
+      <div class="wish-card">
+        <p class="text-gray-700">"Untuk Rifqah yang istimewa, semoga tahun barumu dipenuhi dengan keajaiban dan kebahagiaan. Kamu pantas mendapatkan yang terbaik!"</p>
+        <p class="text-right text-sm font-semibold text-pink-500 mt-2">-2</p>
+      </div>
+      <div class="wish-card">
+        <p class="text-gray-700">"Happy birthday to someone who brings sunshine to everyone around them. Terima kasih telah menjadi dirimu yang luar biasa!"</p>
+        <p class="text-right text-sm font-semibold text-pink-500 mt-2">-3</p>
+      </div>
+    </div>
+    <div class="mt-8">
+      <button onclick="showWishForm()" class="bg-pink-100 hover:bg-pink-200 text-pink-700 font-medium py-2 px-4 rounded-lg shadow-md transition-all">
+        ✍️ Tambahkan Ucapanmu untuk diri sendiri
+      </button>
+    </div>
+    <div id="wish-form" class="hidden max-w-md mx-auto mt-4 bg-white p-4 rounded-lg shadow-md">
+      <input type="text" placeholder="Namamu" class="w-full p-2 mb-2 border rounded">
+      <textarea placeholder="Ucapan untuknya..." rows="3" class="w-full p-2 mb-2 border rounded"></textarea>
+      <button onclick="submitWish()" class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-1 px-4 rounded">
+        Kirim
+      </button>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <div class="my-12 px-4 md:px-12">
+    <h2 class="text-2xl font-semibold text-pink-700 mb-6">✨ perjalanan hidupnya bede</h2>
+    <div class="timeline text-left max-w-2xl mx-auto">
+      <div class="timeline-item">
+        <div class="text-lg font-semibold text-pink-600">Lahir</div>
+        <p class="text-gray-700">lahir di sinjai menjadi bayi</p>
+      </div>
+      <div class="timeline-item">
+        <div class="text-lg font-semibold text-pink-600">Masa Kecil</div>
+        <p class="text-gray-700">masa kecilna nakal selalu na kasih nangis anakna orang selalu berkelahi</p>
+      </div>
+      <div class="timeline-item">
+        <div class="text-lg font-semibold text-pink-600">Pendidikan</div>
+        <p class="text-gray-700">Klo pendidikan baek-baek tawwa Meraih prestasi dan mengejar mimpi.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="text-lg font-semibold text-pink-600">Saat Ini</div>
+        <p class="text-gray-700">Merayakan hari kelahiran dengan penuh kebahagiaan dan harapan untuk masa depan. ANJAYY</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-12 pb-6 text-sm text-gray-600">
+    <p>💖 Dibuat untuk ikka</p>
+    <p class="mt-2"></p>
+  </footer>
+
+  <!-- Include Tone.js for music synthesis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+  
+  <script>
+// Confetti function - fixed version
+function throwConfetti() {
+  // Check if confetti function exists (to avoid errors)
+  if (typeof confetti === 'function') {
+    confetti({
+      particleCount: 180,
+      spread: 120,
+      origin: { y: 0.6 },
+      colors: ['#f472b6', '#fbbf24', '#60a5fa', '#34d399']
+    });
+    
+    // Add extra confetti bursts
+    setTimeout(() => {
+      confetti({
+        particleCount: 80,
+        angle: 60,
+        spread: 70,
+        origin: { x: 0, y: 0.8 }
+      });
+    }, 500);
+    
+    setTimeout(() => {
+      confetti({
+        particleCount: 80,
+        angle: 120,
+        spread: 70,
+        origin: { x: 1, y: 0.8 }
+      });
+    }, 1000);
+  } else {
+    console.error("Confetti library not loaded properly!");
+  }
+}
+
+    // Music with Tone.js
+    let isPlaying = false;
+    let synth;
+    let loop;
+    
+    // Birthday song notes
+    const happyBirthdayNotes = [
+      "C4", "C4", "D4", "C4", "F4", "E4",
+      "C4", "C4", "D4", "C4", "G4", "F4",
+      "C4", "C4", "C5", "A4", "F4", "E4", "D4",
+      "A#4", "A#4", "A4", "F4", "G4", "F4"
+    ];
+    
+    const happyBirthdayTiming = [
+      "8n", "8n", "4n", "4n", "4n", "2n",
+      "8n", "8n", "4n", "4n", "4n", "2n",
+      "8n", "8n", "4n", "4n", "4n", "4n", "4n",
+      "8n", "8n", "4n", "4n", "4n", "2n"
+    ];
+    
+    function setupMusic() {
+      // Create a synth
+      synth = new Tone.PolySynth(Tone.Synth).toDestination();
+      
+      // Set up a pattern
+      let index = 0;
+      loop = new Tone.Loop((time) => {
+        synth.triggerAttackRelease(
+          happyBirthdayNotes[index], 
+          happyBirthdayTiming[index], 
+          time
+        );
+        index = (index + 1) % happyBirthdayNotes.length;
+      }, "4n").start(0);
+      
+      // Start with music paused
+      Tone.Transport.bpm.value = 100;
+      Tone.Transport.stop();
+    }
+    
+    async function playMusic() {
+      if (!synth) {
+        await Tone.start();
+        setupMusic();
+      }
+      
+      if (!isPlaying) {
+        Tone.Transport.start();
+        isPlaying = true;
+        document.getElementById("music-status").textContent = "Musik: Happy Birthday Tune";
+        document.getElementById("play-btn").innerHTML = "❚❚";
+      } else {
+        Tone.Transport.pause();
+        isPlaying = false;
+        document.getElementById("music-status").textContent = "Musik: Dijeda";
+        document.getElementById("play-btn").innerHTML = "▶";
+      }
+    }
+    
+    function stopMusic() {
+      if (synth) {
+        Tone.Transport.stop();
+        isPlaying = false;
+        document.getElementById("music-status").textContent = "Musik: Dihentikan";
+        document.getElementById("play-btn").innerHTML = "▶";
+      }
+    }
+
+    // Birthday countdown
+    function updateCountdown() {
+      const now = new Date();
+      // Set this to Rifqah's actual birthday
+      const birthday = new Date(now.getFullYear(), 3, 10); // April 15th (month is 0-indexed)
+      
+      // If birthday has passed this year, calculate for next year
+      if (now > birthday) {
+        birthday.setFullYear(birthday.getFullYear() + 0);
+      }
+      
+      const diff = birthday - now;
+      
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      // Update the countdown
+      document.getElementById("days").textContent = days.toString().padStart(0, '0');
+      document.getElementById("hours").textContent = hours.toString().padStart(0, '0');
+      document.getElementById("minutes").textContent = minutes.toString().padStart(0, '0');
+      document.getElementById("seconds").textContent = seconds.toString().padStart(0, '0');
+    }
+
+    // Wish form functions
+    function showWishForm() {
+      const form = document.getElementById("wish-form");
+      form.classList.toggle("hidden");
+    }
+
+    function submitWish() {
+      const nameInput = document.querySelector("#wish-form input");
+      const wishInput = document.querySelector("#wish-form textarea");
+      
+      if (nameInput.value && wishInput.value) {
+        const wishesContainer = document.querySelector(".grid.grid-cols-1.md\\:grid-cols-3");
+        
+        const newWish = document.createElement("div");
+        newWish.className = "wish-card animate__animated animate__bounceIn";
+        newWish.innerHTML = `
+          <p class="text-gray-700">"${wishInput.value}"</p>
+          <p class="text-right text-sm font-semibold text-pink-500 mt-2">- ${nameInput.value}</p>
+        `;
+        wishesContainer.appendChild(newWish);
+        
+        // Reset form
+        nameInput.value = "";
+        wishInput.value = "";
+        document.getElementById("wish-form").classList.add("hidden");
+        
+        // Throw confetti to celebrate the new wish
+        throwConfetti();
+      }
+    }
+
+    // Create floating balloons
+    function createBalloons() {
+      const colors = ['#f472b6', '#fbbf24', '#60a5fa', '#34d399', '#a78bfa'];
+      const container = document.getElementById('balloons-container');
+      
+      for (let i = 0; i < 10; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = `${Math.random() * 100}%`;
+        balloon.style.bottom = `-${Math.random() * 100}px`;
+        balloon.style.animationDelay = `${Math.random() * 15}s`;
+        balloon.style.fontSize = `${30 + Math.random() * 20}px`;
+        balloon.style.opacity = '0.7';
+        balloon.innerHTML = '🎈';
+        container.appendChild(balloon);
+      }
+    }
+
+    // Initialize
+    window.onload = () => {
+      throwConfetti();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      createBalloons();
+    }
+  </script>
+</body>
+</html>
